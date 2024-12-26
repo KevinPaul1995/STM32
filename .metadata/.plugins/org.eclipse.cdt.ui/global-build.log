@@ -1,0 +1,44 @@
+11:44:12 **** Clean-only build of configuration Debug for project 1_led_toggle_struct ****
+make -j12 clean 
+rm -rf ./Startup/startup_stm32l432kcux.d ./Startup/startup_stm32l432kcux.o
+rm -rf ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf 1_led_toggle_struct.elf 1_led_toggle_struct.list 1_led_toggle_struct.map default.size.stdout
+ 
+11:44:36 **** Build of configuration Debug for project 1_led_toggle_struct ****
+make -j12 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32l432kcux.d" -MT"Startup/startup_stm32l432kcux.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32l432kcux.o" "../Startup/startup_stm32l432kcux.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32L4 -DSTM32 -DSTM32L432KCUx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32L4 -DSTM32 -DSTM32L432KCUx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32L4 -DSTM32 -DSTM32L432KCUx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc -o "1_led_toggle_struct.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\trabajo\CURSOS\STM32\Udemy bare metal\1_led_toggle_struct\STM32L432KCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="1_led_toggle_struct.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 1_led_toggle_struct.elf
+ 
+arm-none-eabi-size  1_led_toggle_struct.elf 
+arm-none-eabi-objdump -h -S 1_led_toggle_struct.elf  > "1_led_toggle_struct.list"
+   text	   data	    bss	    dec	    hex	filename
+    744	      0	   1568	   2312	    908	1_led_toggle_struct.elf
+Finished building: default.size.stdout
+ 
+Finished building: 1_led_toggle_struct.list
+ 
+11:44:41 **** Incremental Build of configuration Debug for project 1_led_toggle_struct ****
+make -j12 all 
+arm-none-eabi-size  1_led_toggle_struct.elf 
+   text	   data	    bss	    dec	    hex	filename
+    744	      0	   1568	   2312	    908	1_led_toggle_struct.elf
+Finished building: default.size.stdout
+ 
+11:45:14 **** Incremental Build of configuration Debug for project 1_led_toggle_struct ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32L4 -DSTM32 -DSTM32L432KCUx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "1_led_toggle_struct.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\trabajo\CURSOS\STM32\Udemy bare metal\1_led_toggle_struct\STM32L432KCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="1_led_toggle_struct.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 1_led_toggle_struct.elf
+ 
+arm-none-eabi-size  1_led_toggle_struct.elf 
+arm-none-eabi-objdump -h -S 1_led_toggle_struct.elf  > "1_led_toggle_struct.list"
+   text	   data	    bss	    dec	    hex	filename
+    744	      0	   1568	   2312	    908	1_led_toggle_struct.elf
+Finished building: default.size.stdout
+ 
+Finished building: 1_led_toggle_struct.list
+ 

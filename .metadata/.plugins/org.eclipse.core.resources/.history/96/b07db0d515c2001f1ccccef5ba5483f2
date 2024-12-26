@@ -1,0 +1,44 @@
+// toggle  de PB3 que es el led interno de la tarjeta stm32l432kc
+
+#define PERIFERICOS_DIR 		(0x40000000UL)
+#define AHB2_OFFSET				(0X08000000UL)
+#define AHB2_DIR				(PERIFERICOS_DIR+AHB2_OFFSET)
+#define GPIOB_OFFSET			(0X00000400UL)
+#define GPIOB_DIR				(AHB2_DIR+GPIOB_OFFSET)
+#define AHB1_OFFSET				(0x00020000UL)
+#define AHB1_DIR				(PERIFERICOS_DIR+AHB1_OFFSET)
+#define RCC_OFFSET				(0x00001000UL)
+#define RCC_DIR					(AHB1_DIR+RCC_OFFSET)
+#define RCC_AHB2ENR_OFFSET		(0x0000004CUL)
+#define GPIOB_ACTIVO			(1U<<1)
+#define MODO_OFFSET				(0x00000000UL)
+#define GPIOB_SALIDAS_OFFSET 	(0x00000014UL)
+#define led						(1U<<3)
+
+typedef	struct{
+	volatile uint32_t MODO;
+	volatile uint32_t espacio_blanco[4]; // direcciones de registros que no se usarán
+	volatile uint32_t SALIDAS;
+}GPIO_TYPEDEF;
+
+typedef	struct{
+	volatile uint32_t espacio_blanco[19]; // 4C=76->76/4=19
+	volatile uint32_t AHB2_ENABLERS;
+}RCC_TYPEDEF;
+
+#define RCC		((RCC_TYPEDEF*)RCC_DIR)
+#define PUERTOB	((GPIO_TYPEDEF*)GPIOB_DIR)
+
+
+int main(void){
+	RCC->AHB2_ENABLERS|=GPIOB_ACTIVO
+	PUERTOB->MODO|=(1U<<6);
+	PUERTOB->MODO&=~(1U<<7);
+	while(1){
+		PUERTOB->SALIDAS^=led;
+		for (int i = 0; i < 100000; ++i) {
+		}
+	}
+	return 0;
+}
+
